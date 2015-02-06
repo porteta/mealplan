@@ -14,6 +14,7 @@
     },
     "client": {
         "apiUrl": "http://localhost:3000",
-        "debugMode": true
+        "debugMode": true,
+        "firebaseURL": "https://boiling-heat-1052.firebaseio.com/web/data"
     }
 }

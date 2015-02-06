@@ -9,7 +9,7 @@ var MainView = require('./views/main');
 var Me = require('./models/me');
 var People = require('./models/persons');
 var domReady = require('domready');
-
+var firebase = require("./firebase");
 
 module.exports = {
     // this is the the whole app initter
@@ -48,7 +48,9 @@ module.exports = {
     navigate: function (page) {
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, {trigger: true});
-    }
+    },
+
+    firebase: firebase 
 };
 
 // run it
