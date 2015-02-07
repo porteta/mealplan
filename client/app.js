@@ -48,9 +48,7 @@ module.exports = {
     navigate: function (page) {
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, {trigger: true});
-    },
-
-    firebase: firebase 
+    }
 };
 
 // run it

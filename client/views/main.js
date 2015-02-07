@@ -46,6 +46,15 @@ module.exports = View.extend({
 
         // setting a favicon for fun (note, it's dynamic)
         setFavicon('/images/ampersand.png');
+
+        // firebase.authWithOAuthPopup("google", function(error, authData) {
+        //   if (error) {
+        //     console.log("Login Failed!", error);
+        //   } else {
+        //     console.log("Authenticated successfully with payload:", authData);
+        //   }
+        // });
+        
         return this;
     },
 
