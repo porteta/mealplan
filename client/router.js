@@ -1,4 +1,4 @@
-/*global me, app*/
+/*global app*/
 var Router = require('ampersand-router');
 var firebase = require('./firebase');
 var HomePage = require('./pages/home');
@@ -41,22 +41,17 @@ module.exports = Router.extend({
 
     // ------- ROUTE HANDLERS ---------
     home: function () {
-        this.trigger('page', new HomePage({
-            model: me
-        }));
+        this.trigger('page', new HomePage());
     },
 
     collectionDemo: function () {
         this.trigger('page', new CollectionDemo({
-            model: me,
             collection: app.people
         }));
     },
 
     info: function () {
-        this.trigger('page', new InfoPage({
-            model: me
-        }));
+        this.trigger('page', new InfoPage());
     },
 
     logout: function () {
