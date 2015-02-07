@@ -30,19 +30,9 @@
         return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
     };
 
-    // includes/person.jade compiled template
-    templatizer["includes"]["person"] = function tmpl_includes_person() {
-        return '<li class="person list-group-item"><img data-hook="avatar" width="40" height="40"/><a data-hook="name"></a><span class="btn-group pull-right"> <a data-hook="action-edit" class="btn btn-default">edit </a><a href="#" data-hook="action-delete" class="btn btn-danger">delete</a></span></li>';
-    };
-
     // nav.jade compiled template
     templatizer["nav"] = function tmpl_nav() {
-        return '<nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Mealplan</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/collections">collection demo</a></li><li><a href="/info">more info</a></li><li><a href="/logout">logout</a></li></ul></div></nav>';
-    };
-
-    // pages/collectionDemo.jade compiled template
-    templatizer["pages"]["collectionDemo"] = function tmpl_pages_collectionDemo() {
-        return '<section class="page pageOne"><h2>Collection demo</h2><p>Intelligently rendering collections can be a bit tricky. </p><p><a href="https://github.com/ampersandjs/ampersand-view">ampersand-view\'s</a> <code>renderCollection()</code> method makes it simple.</p><p>The only code required to manage the collection is:</p><pre><code>this.renderCollection(\n   this.collection, \n   PersonView, \n   this.queryByHook(\'people-list\')\n);</code></pre><h3>People container:</h3><ul data-hook="people-list" class="list-group"></ul><p>Try it by clicking the buttons</p><div class="buttons btn-group"><button data-hook="reset" class="btn btn-default">.reset() </button><button data-hook="fetch" class="btn btn-default">.fetch() </button><button data-hook="shuffle" class="btn btn-default">.shuffle() </button><button data-hook="add" class="btn btn-default">.addRandom()</button><a href="/person/add" class="btn btn-default">Add Person</a></div><p>Events are always managed so you don\'t get any leaks.</p></section>';
+        return '<nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Mealplan</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/info">more info</a></li><li><a href="/logout">logout</a></li></ul></div></nav>';
     };
 
     // pages/home.jade compiled template
@@ -66,21 +56,6 @@
             buf.push("</section>");
         }).call(this, "app" in locals_for_with ? locals_for_with.app : typeof app !== "undefined" ? app : undefined);
         return buf.join("");
-    };
-
-    // pages/personAdd.jade compiled template
-    templatizer["pages"]["personAdd"] = function tmpl_pages_personAdd() {
-        return '<section class="page add-person"><h2>Add Person</h2><p>This form and all behavior is defined by the form view in <code>client/forms/person.js</code>.</p><p>The same form-view is used for both editing and creating new users.</p><form data-hook="person-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
-    };
-
-    // pages/personEdit.jade compiled template
-    templatizer["pages"]["personEdit"] = function tmpl_pages_personEdit() {
-        return '<section class="page edit-person"><h2>Edit Person</h2><p>This form and all behavior is defined by the form view in <code>client/forms/person.js</code>.</p><p>The same form-view is used for both editing and creating new users.</p><form data-hook="person-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
-    };
-
-    // pages/personView.jade compiled template
-    templatizer["pages"]["personView"] = function tmpl_pages_personView() {
-        return '<section class="page view-person"><h2 data-hook="name"></h2><img data-hook="avatar" width="80" height="80"/><div class="buttons"><a data-hook="edit" class="btn">Edit</a><button data-hook="delete" class="btn">Delete</button></div></section>';
     };
 
     return templatizer;

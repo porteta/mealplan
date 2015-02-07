@@ -1,12 +1,8 @@
 /*global app*/
 var Router = require('ampersand-router');
-var firebase = require('./firebase');
 var HomePage = require('./pages/home');
-var CollectionDemo = require('./pages/collection-demo');
 var InfoPage = require('./pages/info');
-var PersonAddPage = require('./pages/person-add');
-var PersonEditPage = require('./pages/person-edit');
-var PersonViewPage = require('./pages/person-view');
+var firebase = require('./firebase');
 
 
 module.exports = Router.extend({
@@ -15,9 +11,6 @@ module.exports = Router.extend({
         'collections': 'collectionDemo',
         'info': 'info',
         'logout': 'logout',
-        'person/add': 'personAdd',
-        'person/:id': 'personView',
-        'person/:id/edit': 'personEdit',
         '(*path)': 'catchAll'
     },
 
@@ -44,12 +37,6 @@ module.exports = Router.extend({
         this.trigger('page', new HomePage());
     },
 
-    collectionDemo: function () {
-        this.trigger('page', new CollectionDemo({
-            collection: app.people
-        }));
-    },
-
     info: function () {
         this.trigger('page', new InfoPage());
     },
@@ -58,22 +45,6 @@ module.exports = Router.extend({
         firebase.unauth();
         app.auth.trigger('logout');
         this.navigate('info', true);
-    },
-
-    personAdd: function () {
-        this.trigger('page', new PersonAddPage());
-    },
-
-    personEdit: function (id) {
-        this.trigger('page', new PersonEditPage({
-            id: id
-        }));
-    },
-
-    personView: function (id) {
-        this.trigger('page', new PersonViewPage({
-            id: id
-        }));
     },
 
     catchAll: function () {

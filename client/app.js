@@ -6,7 +6,6 @@ var Events = require('ampersand-events');
 var Router = require('./router');
 var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
-var People = require('./models/persons');
 var domReady = require('domready');
 var firebase = require("./firebase");
 
@@ -14,8 +13,6 @@ module.exports = {
     // this is the the whole app initter
     blastoff: function () {
         var self = window.app = this;
-
-        this.people = new People();
 
         // create app.auth object
         this.auth = firebase.getAuth() ? firebase.getAuth() : {};

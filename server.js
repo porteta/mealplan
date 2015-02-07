@@ -44,18 +44,6 @@ app.use(helmet.nosniff());
 
 app.set('view engine', 'jade');
 
-
-// -----------------
-// Set up our little demo API
-// -----------------
-var api = require('./fakeApi');
-app.get('/api/people', api.list);
-app.get('/api/people/:id', api.get);
-app.delete('/api/people/:id', api.delete);
-app.put('/api/people/:id', api.update);
-app.post('/api/people', api.add);
-
-
 // -----------------
 // Enable the functional test site in development
 // -----------------
