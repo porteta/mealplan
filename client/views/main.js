@@ -15,6 +15,7 @@ var setFavicon = require('favicon-setter');
 
 module.exports = View.extend({
     template: templates.body,
+    navigation: templates.nav,
     initialize: function () {
         // this marks the correct nav item selected
         this.listenTo(app.router, 'page', this.handleNewPage);
@@ -23,6 +24,7 @@ module.exports = View.extend({
         'click a[href]': 'handleLinkClick'
     },
     render: function () {
+        var self = this;
         // some additional stuff we want to add to the document head
         document.head.appendChild(domify(templates.head()));
 
@@ -46,15 +48,17 @@ module.exports = View.extend({
 
         // setting a favicon for fun (note, it's dynamic)
         setFavicon('/images/ampersand.png');
+        // only show nav for users
+        if(app.auth.token) {
+            $(self.query('.navigation')).html(self.navigation);
+        }
 
-        // firebase.authWithOAuthPopup("google", function(error, authData) {
-        //   if (error) {
-        //     console.log("Login Failed!", error);
-        //   } else {
-        //     console.log("Authenticated successfully with payload:", authData);
-        //   }
-        // });
-        
+        app.auth.on('login', function () {
+            $(self.query('.navigation')).html(self.navigation);
+        });
+        app.auth.on('logout', function () {
+            $(self.query('.navigation')).empty();
+        });
         return this;
     },
 

@@ -14,6 +14,7 @@ module.exports = Router.extend({
         '': 'home',
         'collections': 'collectionDemo',
         'info': 'info',
+        'logout': 'logout',
         'person/add': 'personAdd',
         'person/:id': 'personView',
         'person/:id/edit': 'personEdit',
@@ -56,6 +57,12 @@ module.exports = Router.extend({
         this.trigger('page', new InfoPage({
             model: me
         }));
+    },
+
+    logout: function () {
+        firebase.unauth();
+        app.auth.trigger('logout');
+        this.navigate('info', true);
     },
 
     personAdd: function () {

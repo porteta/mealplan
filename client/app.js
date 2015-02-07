@@ -2,7 +2,7 @@
 var _ = require('underscore');
 var logger = require('andlog');
 var config = require('clientconfig');
-
+var Events = require('ampersand-events');
 var Router = require('./router');
 var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
@@ -20,6 +20,17 @@ module.exports = {
         window.me = new Me();
         this.people = new People();
 
+        // create app.auth object
+        this.auth = firebase.getAuth() ? firebase.getAuth() : {};
+        this.loggedIn = this.auth.token ? true : false;
+        Events.createEmitter(this.auth);
+        this.auth.on('login', function() {
+            self.loggedIn = true;
+        });
+        this.auth.on('logout', function() {
+            self.loggedIn = false;
+        });
+        
         // init our URL handlers and the history tracker
         this.router = new Router();
 
