@@ -42,8 +42,7 @@ module.exports = Router.extend({
     },
 
     logout: function () {
-        firebase.unauth();
-        app.auth.trigger('logout');
+        app.currentUser.logout();
         this.navigate('info', true);
     },
 

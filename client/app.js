@@ -7,24 +7,16 @@ var Router = require('./router');
 var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
 var domReady = require('domready');
-var firebase = require("./firebase");
+var firebase = require('./firebase');
+var CurrentUser = require('./models/currentUser');
 
 module.exports = {
     // this is the the whole app initter
     blastoff: function () {
         var self = window.app = this;
 
-        // create app.auth object
-        this.auth = firebase.getAuth() ? firebase.getAuth() : {};
-        this.loggedIn = this.auth.token ? true : false;
-        Events.createEmitter(this.auth);
-        this.auth.on('login', function() {
-            self.loggedIn = true;
-        });
-        this.auth.on('logout', function() {
-            self.loggedIn = false;
-        });
-        
+        this.currentUser = new CurrentUser();
+
         // init our URL handlers and the history tracker
         this.router = new Router();
 

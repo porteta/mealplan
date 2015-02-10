@@ -48,17 +48,19 @@ module.exports = View.extend({
 
         // setting a favicon for fun (note, it's dynamic)
         setFavicon('/images/ampersand.png');
+
         // only show nav for users
-        if(app.auth.token) {
+        if(app.currentUser.loggedIn) {
             $(self.query('.navigation')).html(self.navigation);
         }
 
-        app.auth.on('login', function () {
-            $(self.query('.navigation')).html(self.navigation);
+        app.currentUser.on('change:loggedIn', function () {
+            if(app.currentUser.loggedIn)
+                $(self.query('.navigation')).html(self.navigation);
+            else
+                $(self.query('.navigation')).empty();
         });
-        app.auth.on('logout', function () {
-            $(self.query('.navigation')).empty();
-        });
+
         return this;
     },
 

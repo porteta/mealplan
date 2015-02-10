@@ -1,26 +1,24 @@
 var PageView = require('./base');
 var templates = require('../templates');
-var firebase = require('../firebase');
 var $ = require('jquery-browserify');
 
 module.exports = PageView.extend({
     pageTitle: 'more info',
     template: templates.pages.info,
+    bindings: {
+        'model.loginError': '[data-hook~=error]'
+    },
     events: {
         'click [data-hook~=login]': 'login'
     },
     login: function() {
         var self = this;
-        var $error = $(self.queryByHook('error'));
-        $error.hide();
-        firebase.authWithOAuthPopup("google", function(error, authData) {
-          if (error) {
-            $error.text('There was a problem logging in. Please try again.').show();
-          } else {
-            app.auth.trigger('login');
+        app.currentUser.loginWithGoogle(function(){
             app.navigate('/');
-          }
         });
-        
+    },
+    render: function() {
+        this.model = app.currentUser;
+        return PageView.prototype.render.call(this);
     }
 });

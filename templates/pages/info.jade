@@ -1,7 +1,7 @@
 section.page.pageTwo
   h2 Simple Page Example
   p This page was rendered by a simple page view file at client/pages/info.js.
-  if app.loggedIn
+  if app.currentUser.loggedIn
     a(href="/") Plan a Meal
   else
     a(data-hook="login") Login
