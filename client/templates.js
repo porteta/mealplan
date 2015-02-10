@@ -32,7 +32,7 @@
 
     // nav.jade compiled template
     templatizer["nav"] = function tmpl_nav() {
-        return '<nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Mealplan</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/logout">logout</a></li></ul></div></nav>';
+        return '<nav><h1><a href="/" class="navbar-brand">Mealplan</a></h1><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/logout">logout</a></li></ul></nav>';
     };
 
     // pages/home.jade compiled template
