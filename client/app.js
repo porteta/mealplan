@@ -1,13 +1,11 @@
-/*global app, me, $*/
-var _ = require('underscore');
-var logger = require('andlog');
-var config = require('clientconfig');
-var Events = require('ampersand-events');
+/*global document, window*/
+// var _ = require('underscore');
+// var logger = require('andlog');
+// var config = require('clientconfig');
+// var tracking = require('./helpers/metrics');
 var Router = require('./router');
-var tracking = require('./helpers/metrics');
 var MainView = require('./views/main');
 var domReady = require('domready');
-var firebase = require('./firebase');
 var CurrentUser = require('./models/currentUser');
 
 module.exports = {
