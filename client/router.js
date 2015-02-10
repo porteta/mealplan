@@ -2,8 +2,7 @@
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
 var InfoPage = require('./pages/info');
-var firebase = require('./firebase');
-
+var CurrentUser = require('./models/currentUser');
 
 module.exports = Router.extend({
     routes: {
@@ -16,11 +15,14 @@ module.exports = Router.extend({
 
     route: function(route, name, callback) {
         var router = this;
+        var currentUser = new CurrentUser();
+
         if (!callback) callback = this[name];
 
         var f = function() {
             // redirect non-users to info page
-            if(name === 'info' || firebase.getAuth()) {
+
+            if(name === 'info' || app.currentUser.loggedIn) {
                 // Pre route
                 callback.apply(router, arguments);
                 // Post route
@@ -38,7 +40,9 @@ module.exports = Router.extend({
     },
 
     info: function () {
-        this.trigger('page', new InfoPage());
+        this.trigger('page', new InfoPage({
+            model: app.currentUser
+        }));
     },
 
     logout: function () {

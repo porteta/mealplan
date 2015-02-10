@@ -1,4 +1,4 @@
-/*global app, me, $*/
+/*global app*/
 // This app view is responsible for rendering all content that goes into
 // <html>. It's initted right away and renders itself on DOM ready.
 
@@ -11,6 +11,7 @@ var dom = require('ampersand-dom');
 var templates = require('../templates');
 var tracking = require('../helpers/metrics');
 var setFavicon = require('favicon-setter');
+var $ = require('jquery-browserify');
 
 
 module.exports = View.extend({

@@ -14,9 +14,11 @@ module.exports = AmpersandModel.extend({
         fullName: {
             deps: ['auth'],
             fn: function () {
-                // console.log(this.auth)
-                // if(this.auth && )
-                return 'hey';//this.firstName + ' ' + this.lastName;
+                if(this.auth && this.auth.google) {
+                    return this.auth.google.displayName;
+                }
+                
+                return false;
             }
         },
         loggedIn: {
