@@ -1,3 +1,4 @@
+/*global app*/
 var PageView = require('./base');
 var templates = require('../templates');
 

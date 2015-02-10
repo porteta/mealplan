@@ -37,9 +37,11 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {
+    "jshint": "^2.6.0",
     "node-bourbon": "^1.2.3",
     "node-neat": "^1.4.2",
-    "node-sass": "^2.0.0-beta"
+    "node-sass": "^2.0.0-beta",
+    "precommit-hook": "^1.0.7"
   },
   "jshintConfig": {
     "asi": false,
@@ -52,5 +54,11 @@
     "trailing": true,
     "undef": true,
     "white": true
-  }
+  },
+  "scripts": {
+    "lint": "jshint client"
+  },
+  "precommit": [
+    "lint"
+  ]
 }
