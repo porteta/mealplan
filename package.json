@@ -56,9 +56,11 @@
     "white": true
   },
   "scripts": {
-    "lint": "jshint client"
+    "lint": "jshint client",
+    "scss-lint": "scss-lint sass"
   },
   "precommit": [
-    "lint"
+    "lint",
+    "scss-lint"
   ]
 }
