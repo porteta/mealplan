@@ -9,8 +9,11 @@ var compress = require('compression');
 var config = require('getconfig');
 var semiStatic = require('semi-static');
 var serveStatic = require('serve-static');
-var stylizer = require('stylizer');
+var sass = require('node-sass');
 var templatizer = require('templatizer');
+var fs = require('fs');
+var bourbon = require('node-bourbon');
+var neat = require('node-neat');
 var app = express();
 
 // a little helper for fixing paths for various environments
@@ -76,7 +79,6 @@ new Moonboots({
         libraries: [
         ],
         stylesheets: [
-            fixPath('public/css/bootstrap.css'),
             fixPath('public/css/app.css')
         ],
         browserify: {
@@ -95,11 +97,14 @@ new Moonboots({
             // css file is requested. Which means you can seamlessly change stylus files
             // and see new styles on refresh.
             if (config.isDev) {
-                stylizer({
-                    infile: fixPath('public/css/app.styl'),
-                    outfile: fixPath('public/css/app.css'),
-                    development: true
-                }, done);
+                sass.render({
+                    file: fixPath('sass/app.scss'),
+                    includePaths: neat.includePaths,
+                    success: function(result) {
+                        fs.writeFileSync('public/css/app.css', result.css);
+                        done();
+                    }
+                });
             } else {
                 done();
             }

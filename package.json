@@ -36,7 +36,11 @@
     "templatizer": "^1.0.0",
     "underscore": "^1.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-bourbon": "^1.2.3",
+    "node-neat": "^1.4.2",
+    "node-sass": "^2.0.0-beta"
+  },
   "jshintConfig": {
     "asi": false,
     "browser": true,
