@@ -9,7 +9,6 @@ module.exports = Router.extend({
         '': 'home',
         'collections': 'collectionDemo',
         'info': 'info',
-        'logout': 'logout',
         '(*path)': 'catchAll'
     },
 
@@ -43,11 +42,6 @@ module.exports = Router.extend({
         this.trigger('page', new InfoPage({
             model: app.currentUser
         }));
-    },
-
-    logout: function () {
-        app.currentUser.logout();
-        this.navigate('info', true);
     },
 
     catchAll: function () {

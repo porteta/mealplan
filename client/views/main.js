@@ -1,4 +1,4 @@
-/*global app*/
+/*global app, document, window*/
 // This app view is responsible for rendering all content that goes into
 // <html>. It's initted right away and renders itself on DOM ready.
 
@@ -9,7 +9,7 @@ var _ = require('underscore');
 var domify = require('domify');
 var dom = require('ampersand-dom');
 var templates = require('../templates');
-var tracking = require('../helpers/metrics');
+// var tracking = require('../helpers/metrics');
 var setFavicon = require('favicon-setter');
 var $ = require('jquery-browserify');
 
@@ -22,7 +22,8 @@ module.exports = View.extend({
         this.listenTo(app.router, 'page', this.handleNewPage);
     },
     events: {
-        'click a[href]': 'handleLinkClick'
+        'click a[href]': 'handleLinkClick',
+        'click [data-hook~=logout]': 'logout'
     },
     render: function () {
         var self = this;
@@ -44,6 +45,7 @@ module.exports = View.extend({
 
                 // store an additional reference, just because
                 app.currentPage = newView;
+                app.prevPage = oldView;
             }
         });
 
@@ -56,10 +58,11 @@ module.exports = View.extend({
         }
 
         app.currentUser.on('change:loggedIn', function () {
-            if(app.currentUser.loggedIn)
+            if(app.currentUser.loggedIn) {
                 $(self.query('.navigation')).html(self.navigation);
-            else
+            } else {
                 $(self.query('.navigation')).empty();
+            }
         });
 
         return this;
@@ -83,6 +86,11 @@ module.exports = View.extend({
             e.preventDefault();
             app.navigate(aTag.pathname);
         }
+    },
+
+    logout: function () {
+        app.currentUser.logout();
+        app.navigate('info', true);
     },
 
     updateActiveNav: function () {
