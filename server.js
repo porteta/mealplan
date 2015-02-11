@@ -79,6 +79,7 @@ new Moonboots({
         libraries: [
         ],
         stylesheets: [
+            fixPath('node_modules/normalize.css/normalize.css'),
             fixPath('public/css/app.css')
         ],
         browserify: {

@@ -15,8 +15,13 @@ h5,
 h6 {
   font-family: $heading-font-family;
   font-size: $base-font-size;
+  font-weight: normal;
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 p {
