@@ -42,7 +42,7 @@
 
     // pages/home.jade compiled template
     templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return '<section class="page home"><div class="form-container"><h3>Start Planning</h3><form data-hook="plan-form"><div data-hook="plan-form-fields" class="fields"></div><button data-hook="reset" type="submit">Submit</button></form></div></section>';
+        return '<section class="page home"><div class="form-container"><h3>Start Planning</h3><form data-hook="plan-form"><fieldset data-hook="field-container"></fieldset><button type="submit">Submit</button></form></div></section>';
     };
 
     // pages/info.jade compiled template

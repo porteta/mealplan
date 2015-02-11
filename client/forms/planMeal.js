@@ -16,16 +16,17 @@ module.exports = FormView.extend({
                 placeholder: 'name your meal',
                 parent: this
             }),
+            new ExtendedInput({
+                value: this.model && this.model.locationQuery,
+                name: 'locationQuery',
+                rootElementClass: 'location',
+                placeholder: 'city, state, or zipcode',
+                parent: this
+            }),
             new DateTimeView({
                 name: 'date',
                 rootElementClass: 'date',
                 value: this.model && this.model.date,
-                parent: this
-            }),
-            new ExtendedInput({
-                value: this.model && this.model.locationQuery,
-                rootElementClass: 'location',
-                placeholder: 'city, state, or zipcode',
                 parent: this
             })
         ];

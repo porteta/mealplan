@@ -12,13 +12,14 @@
     @include span-columns(12);
   }
 
+  .location {
+    @include span-columns(12);
+  }
+
   .date {
     @include span-columns(12);
   }
 
-  .location {
-    @include span-columns(12);
-  }
 
   button {
     @include span-columns(12);

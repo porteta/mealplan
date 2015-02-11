@@ -43,10 +43,9 @@ input[type="button"], input[type="reset"], input[type="submit"], button {
     opacity: .5; }
 
 fieldset {
-  background-color: #b3b3b3;
-  border: 1px solid #999;
-  margin: 0 0 0.75em;
-  padding: 1.5em; }
+  border: none;
+  margin: 0;
+  padding: 0; }
 
 input, label, select {
   display: block;
@@ -276,19 +275,19 @@ img, picture {
   width: 100%; }
   .home .name:last-child {
     margin-right: 0; }
-.home .date {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%; }
-  .home .date:last-child {
-    margin-right: 0; }
 .home .location {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 100%; }
   .home .location:last-child {
+    margin-right: 0; }
+.home .date {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .home .date:last-child {
     margin-right: 0; }
 .home button {
   float: left;
