@@ -1,0 +1,37 @@
+nav {
+  @include outer-container;
+  padding: 1em;
+  text-align: center;
+  text-transform: lowercase;
+
+  .profile {
+    @include span-columns(4);
+    @include shift(8);
+    text-align: right;
+  }
+
+  .login, .logout {
+    cursor: pointer;
+  }
+
+  .logout {
+    display: none;
+
+    &:before {
+      content: ' / ';
+      font-weight: normal;
+    }
+  }
+
+  &.logged-in {
+
+    .logout {
+      display: inline;
+    }
+
+    .login {
+      display: none;
+    }
+  }
+
+}

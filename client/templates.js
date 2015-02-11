@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><div class="navigation"></div><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><div data-hook="nav-container"></div><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -32,7 +32,7 @@
 
     // nav.jade compiled template
     templatizer["nav"] = function tmpl_nav() {
-        return '<nav><h1><a href="/" class="navbar-brand">mealplan</a></h1><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a data-hook="logout">logout</a></li></ul></nav>';
+        return '<nav><div class="profile"><b data-hook="name"></b><b data-hook="login" class="login">Login</b><b data-hook="logout" class="logout">Logout</b></div><h1><a href="/">Mealplan</a></h1><h3>A simple way to plan a gathering</h3></nav>';
     };
 
     // pages/home.jade compiled template

@@ -11,22 +11,29 @@ var dom = require('ampersand-dom');
 var templates = require('../templates');
 // var tracking = require('../helpers/metrics');
 var setFavicon = require('favicon-setter');
-var $ = require('jquery-browserify');
-
+var NavView = require('./nav');
 
 module.exports = View.extend({
     template: templates.body,
-    navigation: templates.nav,
     initialize: function () {
         // this marks the correct nav item selected
         this.listenTo(app.router, 'page', this.handleNewPage);
     },
     events: {
-        'click a[href]': 'handleLinkClick',
-        'click [data-hook~=logout]': 'logout'
+        'click a[href]': 'handleLinkClick'
+    },
+    subviews: {
+        nav: {
+            container: '[data-hook=nav-container]',
+            prepareView: function (el) {
+                return new NavView({
+                    el: el,
+                    model: app.currentUser
+                });
+            }
+        }
     },
     render: function () {
-        var self = this;
         // some additional stuff we want to add to the document head
         document.head.appendChild(domify(templates.head()));
 
@@ -52,19 +59,6 @@ module.exports = View.extend({
         // setting a favicon for fun (note, it's dynamic)
         setFavicon('/images/ampersand.png');
 
-        // only show nav for users
-        if(app.currentUser.loggedIn) {
-            $(self.query('.navigation')).html(self.navigation);
-        }
-
-        app.currentUser.on('change:loggedIn', function () {
-            if(app.currentUser.loggedIn) {
-                $(self.query('.navigation')).html(self.navigation);
-            } else {
-                $(self.query('.navigation')).empty();
-            }
-        });
-
         return this;
     },
 
@@ -86,11 +80,6 @@ module.exports = View.extend({
             e.preventDefault();
             app.navigate(aTag.pathname);
         }
-    },
-
-    logout: function () {
-        app.currentUser.logout();
-        app.navigate('info', true);
     },
 
     updateActiveNav: function () {

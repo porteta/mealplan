@@ -103,7 +103,11 @@ new Moonboots({
                     includePaths: neat.includePaths,
                     success: function(result) {
                         fs.writeFileSync('public/css/app.css', result.css);
+                        console.log('sass compiled');
                         done();
+                    },
+                    error: function(error) {
+                        console.log(error);
                     }
                 });
             } else {
