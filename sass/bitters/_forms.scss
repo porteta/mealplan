@@ -48,6 +48,7 @@ textarea {
     background-color: lighten($input-focus-background-color, 10%);
     border-color: darken($base-border-color, 20%);
     outline: none;
+
     @include placeholder {
       color: $medium-gray;
     }
@@ -74,25 +75,25 @@ input[type='file'] {
 }
 
 .select-style {
-  padding: $base-spacing / 2;
-  margin: 0 0 $base-spacing;;
+  background: $base-background-color url('/img/arrowdown.gif') no-repeat right 10px center;
   border: $base-border;
-  width: 100%;
   border-radius: $base-border-radius;
+  margin: 0 0 $base-spacing;
   overflow: hidden;
-  background: $base-background-color url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat right 10px center;;
+  padding: $base-spacing / 2;
+  width: 100%;
 
   select {
-    // padding: 5px 8px;
-    width: 130%;
-    border: none;
-    box-shadow: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     background-color: transparent;
     background-image: none;
+    border: none;
+    box-shadow: none;
     line-height: 1.4em;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    width: 130%;
+
     &:focus {
       outline: none;
     }
@@ -128,6 +129,6 @@ select {
 
   .meridiem {
     @include span-columns(4);
-    @include omega
+    @include omega;
   }
 }
