@@ -1,8 +1,8 @@
-section.page.pageTwo
+section.container
   h2 Simple Page Example
   p This page was rendered by a simple page view file at client/pages/info.js.
   if app.currentUser.loggedIn
     a(href="/") Plan a Meal
   else
-    a(data-hook="login") Login
+    button(data-hook="login") Login with Google
     .error(data-hook="error")

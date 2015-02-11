@@ -47,11 +47,11 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(app) {
-            buf.push('<section class="page pageTwo"><h2>Simple Page Example</h2><p>This page was rendered by a simple page view file at client/pages/info.js.</p>');
+            buf.push('<section class="container"><h2>Simple Page Example</h2><p>This page was rendered by a simple page view file at client/pages/info.js.</p>');
             if (app.currentUser.loggedIn) {
                 buf.push('<a href="/">Plan a Meal</a>');
             } else {
-                buf.push('<a data-hook="login">Login</a><div data-hook="error" class="error"></div>');
+                buf.push('<button data-hook="login">Login with Google</button><div data-hook="error" class="error"></div>');
             }
             buf.push("</section>");
         }).call(this, "app" in locals_for_with ? locals_for_with.app : typeof app !== "undefined" ? app : undefined);
