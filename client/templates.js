@@ -25,9 +25,14 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
+    // includes/dateTimeInput.jade compiled template
+    templatizer["includes"]["dateTimeInput"] = function tmpl_includes_dateTimeInput() {
+        return '<div class="form-group"><label data-hook="label"></label><div class="date-controls"><div data-hook="month" class="month select-style"></div><span data-hook="day" class="day"></span><span data-hook="year" class="year"></span><span data-hook="hour" class="hour"></span><span data-hook="minute" class="minute"></span><div data-hook="meridiem" class="meridiem select-style"></div><input type="hidden" data-hook="main"/></div><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div></div>';
+    };
+
     // includes/formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
-        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
+        return '<div class="form-group"><label data-hook="label"></label><input class="form-control"/><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div></div>';
     };
 
     // nav.jade compiled template
@@ -37,7 +42,7 @@
 
     // pages/home.jade compiled template
     templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return '<section class="page home"><h2>Welcome to a skeleton for Mealplan</h2><p><img data-hook="avatar"/></p><p>If you "view source" you\'ll see it\'s 100% client rendered.</p><p>Click around the site using the nav bar at the top. </p><p>Things to note:<ul><li>The url changes, no requests are made to the server.</li><li>Refreshing the page will always get you back to the same page</li><li>Page changes are nearly instantaneous</li><li>In development mode, you don\'t need to restart the server to see changes, just edit and refresh.</li><li>In production mode, it will serve minfied, uniquely named files with super agressive cache headers. To test:<ul> <li>in dev_config.json set <code>isDev</code> to <code>false</code>.</li><li>restart the server.</li><li>view source and you\'ll see minified css and js files with unique names.</li><li>open the "network" tab in chrome dev tools (or something similar). You\'ll also want to make sure you haven\'t disabled your cache.</li><li>without hitting "refresh" load the app again (selecting current URL in url bar and hitting "enter" works great).</li><li>you should now see that the JS and CSS files were both served from cache without making any request to the server at all.</li></ul></li></ul></p></section>';
+        return '<section class="page home"><div class="form-container"><h3>Start Planning</h3><form data-hook="plan-form"><div data-hook="plan-form-fields" class="fields"></div><button data-hook="reset" type="submit">Submit</button></form></div></section>';
     };
 
     // pages/info.jade compiled template

@@ -32,12 +32,11 @@ textarea {
   background-color: $base-background-color;
   border: $base-border;
   border-radius: $base-border-radius;
-  box-shadow: $form-box-shadow;
   box-sizing: border-box;
   font-family: $base-font-family;
   font-size: $base-font-size;
-  margin-bottom: $base-spacing / 2;
-  padding: $base-spacing / 3;
+  margin-bottom: $base-spacing;
+  padding: $base-spacing / 2;
   transition: border-color;
   width: 100%;
 
@@ -46,9 +45,12 @@ textarea {
   }
 
   &:focus {
-    border-color: $action-color;
-    box-shadow: $form-box-shadow-focus;
+    background-color: lighten($input-focus-background-color, 10%);
+    border-color: darken($base-border-color, 20%);
     outline: none;
+    @include placeholder {
+      color: $medium-gray;
+    }
   }
 }
 
@@ -71,8 +73,61 @@ input[type='file'] {
   width: 100%;
 }
 
+.select-style {
+  padding: $base-spacing / 2;
+  margin: 0 0 $base-spacing;;
+  border: $base-border;
+  width: 100%;
+  border-radius: $base-border-radius;
+  overflow: hidden;
+  background: $base-background-color url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat right 10px center;;
+
+  select {
+    // padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    line-height: 1.4em;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 select {
-  margin-bottom: $base-spacing;
   max-width: 100%;
   width: auto;
+}
+
+.date-controls {
+  .month {
+    @include span-columns(6);
+  }
+
+  .day {
+    @include span-columns(2);
+  }
+
+  .year {
+    @include span-columns(4);
+    @include omega;
+  }
+
+  .hour {
+    @include span-columns(4);
+  }
+
+  .minute {
+    @include span-columns(4);
+  }
+
+  .meridiem {
+    @include span-columns(4);
+    @include omega
+  }
 }

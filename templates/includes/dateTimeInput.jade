@@ -1,0 +1,12 @@
+.form-group
+  label(data-hook='label')
+  .date-controls
+    .month.select-style(data-hook='month')
+    span.day(data-hook='day')
+    span.year(data-hook='year')
+    span.hour(data-hook='hour')
+    span.minute(data-hook='minute')
+    .meridiem.select-style(data-hook='meridiem')
+    input(type='hidden', data-hook='main')
+  div(data-hook='message-container')
+    .alert.alert-danger(data-hook='message-text')
