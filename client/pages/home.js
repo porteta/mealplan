@@ -14,22 +14,23 @@ module.exports = PageView.extend({
                     el: el,
                     model: new Meal(),
                     submitCallback: function (data) {
-                        console.log(data);
 
-                        // app.people.create(data, {
+                        this.model.save(data, function(response) {
+                            console.log(response);
+                        });
+                        // Meal.create(data, {
                         //     wait: true,
                         //     success: function () {
-                        //         app.navigate('/collections');
-                        //         app.people.fetch();
+                        //         console.log('success');
                         //     }
                         // });
-                    },
-                    validCallback: function (valid) {
-                        if (valid) {
-                            console.log('The form is valid!');
-                        } else {
-                            console.log('The form is not valid!');
-                        }
+                    // },
+                    // validCallback: function (valid) {
+                    //     if (valid) {
+                    //         console.log('The form is valid!');
+                    //     } else {
+                    //         console.log('The form is not valid!');
+                    //     }
                     }
                 });
             }

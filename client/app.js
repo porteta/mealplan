@@ -42,6 +42,17 @@ module.exports = {
     navigate: function (page) {
         var url = (page.charAt(0) === '/') ? page.slice(1) : page;
         this.router.history.navigate(url, {trigger: true});
+    },
+
+    // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+    generateGuid: function() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
     }
 };
 
