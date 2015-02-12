@@ -8,6 +8,7 @@
     "ampersand-date-view": "0.0.8",
     "ampersand-dom": "^1.2.1",
     "ampersand-events": "^1.0.1",
+    "ampersand-fire": "git+https://git@github.com/porteta/ampersand-fire",
     "ampersand-form-view": "^2.0.0",
     "ampersand-input-view": "^2.0.0",
     "ampersand-model": "^4.0.3",

@@ -1,7 +1,7 @@
 // var AmpersandModel = require('ampersand-model');
-var AmpersandFire = require('../ampersand-fire');
+var AmpersandFire = require('ampersand-fire');
 var config = require('clientconfig');
-console.log(AmpersandFire);
+
 module.exports = AmpersandFire.Model.extend({
     props: {
         id: 'any',
