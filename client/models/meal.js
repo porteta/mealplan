@@ -1,6 +1,8 @@
-var AmpersandModel = require('ampersand-model');
-
-module.exports = AmpersandModel.extend({
+// var AmpersandModel = require('ampersand-model');
+var AmpersandFire = require('../ampersand-fire');
+var config = require('clientconfig');
+console.log(AmpersandFire);
+module.exports = AmpersandFire.Model.extend({
     props: {
         id: 'any',
         name: ['string', true, ''],
@@ -13,6 +15,9 @@ module.exports = AmpersandModel.extend({
     derived: {
 
     },
+
+    urlRoot: config.firebaseURL + 'meals',
+
     initialize: function() {
         this.date = this.date || new Date();
     }
