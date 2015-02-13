@@ -26,6 +26,7 @@ label {
 }
 
 #{$all-text-inputs},
+input[data-hook=datepicker],
 select[multiple=multiple],
 textarea {
   background-color: $base-background-color;
@@ -102,32 +103,4 @@ input[type='file'] {
 select {
   max-width: 100%;
   width: auto;
-}
-
-.date-controls {
-  .month {
-    @include span-columns(6);
-  }
-
-  .day {
-    @include span-columns(2);
-  }
-
-  .year {
-    @include span-columns(4);
-    @include omega;
-  }
-
-  .hour {
-    @include span-columns(4);
-  }
-
-  .minute {
-    @include span-columns(4);
-  }
-
-  .meridiem {
-    @include span-columns(4);
-    @include omega;
-  }
 }

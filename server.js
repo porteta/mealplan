@@ -12,7 +12,6 @@ var serveStatic = require('serve-static');
 var sass = require('node-sass');
 var templatizer = require('templatizer');
 var fs = require('fs');
-var bourbon = require('node-bourbon');
 var neat = require('node-neat');
 var app = express();
 
@@ -80,6 +79,7 @@ new Moonboots({
         ],
         stylesheets: [
             fixPath('node_modules/normalize.css/normalize.css'),
+            fixPath('node_modules/ampersand-pikaday-view/node_modules/pikaday/css/pikaday.css'),
             fixPath('public/css/app.css')
         ],
         browserify: {

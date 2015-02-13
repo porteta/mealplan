@@ -20,6 +20,12 @@
     @include span-columns(12);
   }
 
+  .hour,
+  .minute,
+  .select {
+    @include span-columns(4);
+  }
+
 
   button {
     @include span-columns(12);

@@ -4,7 +4,9 @@ var templates = require('../templates');
 var ExtendedInput = InputView.extend({
     template: templates.includes.formInput()
 });
-var DateTimeView = require('../views/inputs/datetime');
+var SelectView = require('ampersand-select-view');
+var AmpersandPikadayView = require('ampersand-pikaday-view');
+var moment = require('moment');
 
 module.exports = FormView.extend({
     fields: function () {
@@ -23,11 +25,35 @@ module.exports = FormView.extend({
                 placeholder: 'city, state, or zipcode',
                 parent: this
             }),
-            new DateTimeView({
+            new AmpersandPikadayView({
                 name: 'date',
                 rootElementClass: 'date',
                 value: this.model && this.model.date,
                 parent: this
+            }),
+            new ExtendedInput({
+                value: this.model && moment(this.model.date).format('hh'),
+                name: 'hour',
+                rootElementClass: 'hour',
+                placeholder: 'HH',
+                parent: this
+            }),
+            new ExtendedInput({
+                value: this.model && moment(this.model.date).format('mm'),
+                name: 'minute',
+                rootElementClass: 'minute',
+                placeholder: 'MM',
+                parent: this
+            }),
+            new SelectView({
+                label: ' ',
+                name: 'meridiem',
+                parent: this,
+                options: ['am', 'pm'],
+                rootElementClass: 'minute',
+                value: moment(this.model.date).format('a'),
+                required: true,
+                template: templates.includes.selectInput()
             })
         ];
     }

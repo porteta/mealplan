@@ -35,6 +35,11 @@
         return '<div class="form-group"><label data-hook="label"></label><input class="form-control"/><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div></div>';
     };
 
+    // includes/selectInput.jade compiled template
+    templatizer["includes"]["selectInput"] = function tmpl_includes_selectInput() {
+        return '<label class="select"><span data-hook="label"></span><div class="select-style"><select></select></div><span data-hook="message-container" class="message message-below message-error"><p data-hook="message-text"></p></span></label>';
+    };
+
     // nav.jade compiled template
     templatizer["nav"] = function tmpl_nav() {
         return '<nav><div class="profile"><b data-hook="name"></b><b data-hook="login" class="login">Login</b><b data-hook="logout" class="logout">Logout</b></div><h1><a href="/">Mealplan</a></h1><h3>A simple way to plan a gathering</h3></nav>';
