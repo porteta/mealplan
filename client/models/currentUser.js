@@ -17,7 +17,7 @@ module.exports = AmpersandModel.extend({
                 if(this.auth && this.auth.google) {
                     return this.auth.google.displayName;
                 }
-                
+
                 return false;
             }
         },
@@ -37,12 +37,12 @@ module.exports = AmpersandModel.extend({
     },
     loginWithGoogle: function(callback) {
         var self = this;
-        firebase.authWithOAuthPopup("google", function(error, authData) {
+        firebase.authWithOAuthPopup('google', function(error, authData) {
           if (error) {
             self.loginError = 'There was a problem logging in with Google. Please try again.';
           } else {
             self.loginError = undefined;
-            self.auth = firebase.getAuth();
+            self.auth = authData;
             callback();
           }
         });
