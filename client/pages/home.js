@@ -12,14 +12,7 @@ module.exports = PageView.extend({
             prepareView: function (el) {
                 return new PlanMealForm({
                     el: el,
-                    model: new Meal(),
-                    submitCallback: function (data) {
-                        this.model.save(data, function(response) {
-                            console.log(response);
-                        }, function(error) {
-                            console.log(error);
-                        });
-                    }
+                    model: new Meal()
                 });
             }
         }

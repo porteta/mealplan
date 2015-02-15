@@ -1,3 +1,4 @@
+/*global app*/
 var FormView = require('ampersand-form-view');
 var InputView = require('ampersand-input-view');
 var templates = require('../templates');
@@ -56,5 +57,19 @@ module.exports = FormView.extend({
                 template: templates.includes.selectInput()
             })
         ];
+    },
+    submitCallback: function(data) {
+        data.minute = parseInt(data.minute, 10);
+        data.hour = parseInt(data.hour, 10);
+        var newDate = moment(data.date);
+        newDate.minutes(data.minute);
+        if(data.meridiem == 'pm' && data.hour < 12) {
+            data.hour = data.hour + 12;
+        }
+        newDate.hours(data.hour);
+        data.date = new Date(newDate.format());
+        this.model.set('date', data.date);
+        this.model.set('name', data.name);
+        this.model.set('locationQuery', data.locationQuery);
     }
 });

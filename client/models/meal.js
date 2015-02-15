@@ -18,8 +18,7 @@ module.exports = AmpersandFire.Model.extend({
     urlRoot: config.firebaseURL + 'meals',
 
     initialize: function() {
-        console.log(this.prototype);
-        this.id = app.generateGuid();
+        this.id = this.id || app.generateGuid();
         var datetime = new moment().startOf('minute');
         if(datetime.minutes() > 45) {
             datetime.add(1, 'hour').minutes(0);
@@ -28,22 +27,5 @@ module.exports = AmpersandFire.Model.extend({
             datetime.minutes(datetime.minutes() + diff);
         }
         this.date = datetime;
-    },
-    save: function(attrs, options) {
-        if(attrs.date && attrs.hour && attrs.minute && attrs.meridiem) {
-            attrs.minute = parseInt(attrs.minute, 10);
-            attrs.hour = parseInt(attrs.hour, 10);
-            var newDate = moment(attrs.date);
-            newDate.minutes(attrs.minute);//.hours(this.hours);
-            if(attrs.meridiem == 'pm' && attrs.hour < 12) {
-                attrs.hour = attrs.hour + 12;
-            }
-            newDate.hours(attrs.hour);
-            attrs.date = new Date(newDate.format());
-            delete attrs.hour;
-            delete attrs.minute;
-            delete attrs.meridiem;
-        }
-        AmpersandFire.Model.prototype.save.call(this, attrs, options);
     }
 });
