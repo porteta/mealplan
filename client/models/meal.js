@@ -1,10 +1,10 @@
 /*global app*/
-// var AmpersandModel = require('ampersand-model');
+var AmpersandModel = require('ampersand-model');
 var AmpersandFire = require('ampersand-fire');
 var config = require('clientconfig');
 var moment = require('moment');
 
-module.exports = AmpersandFire.Model.extend({
+module.exports = AmpersandModel.extend({
     props: {
         id: ['any', true],
         name: ['string', true, ''],
@@ -14,8 +14,6 @@ module.exports = AmpersandFire.Model.extend({
     derived: {
 
     },
-
-    urlRoot: config.firebaseURL + 'meals',
 
     initialize: function() {
         this.id = this.id || app.generateGuid();

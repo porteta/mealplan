@@ -71,5 +71,6 @@ module.exports = FormView.extend({
         this.model.set('date', data.date);
         this.model.set('name', data.name);
         this.model.set('locationQuery', data.locationQuery);
+        app.navigate('meal/' + this.model.id);
     }
 });

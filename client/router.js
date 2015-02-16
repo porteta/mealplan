@@ -2,12 +2,13 @@
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
 var InfoPage = require('./pages/info');
+var MealPage = require('./pages/meal');
 
 module.exports = Router.extend({
     routes: {
         '': 'home',
-        'collections': 'collectionDemo',
         'info': 'info',
+        'meal/:id': 'meal',
         '(*path)': 'catchAll'
     },
 
@@ -40,6 +41,13 @@ module.exports = Router.extend({
 
     info: function () {
         this.trigger('page', new InfoPage({
+            model: app.currentUser
+        }));
+    },
+
+    meal: function(id) {
+        console.log('meal', id);
+        this.trigger('page', new MealPage({
             model: app.currentUser
         }));
     },
