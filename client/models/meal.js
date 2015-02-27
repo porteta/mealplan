@@ -1,12 +1,12 @@
 /*global app*/
 var AmpersandModel = require('ampersand-model');
-var AmpersandFire = require('ampersand-fire');
+// var AmpersandFire = require('ampersand-fire');
 var config = require('clientconfig');
 var moment = require('moment');
+var _ = require('underscore');
 
 module.exports = AmpersandModel.extend({
     props: {
-        id: ['any', true],
         name: ['string', true, ''],
         date: ['date', true],
         locationQuery: ['string', true]
@@ -14,7 +14,7 @@ module.exports = AmpersandModel.extend({
     derived: {
 
     },
-
+    url: config.firebaseURL + 'meals',
     initialize: function() {
         this.id = this.id || app.generateGuid();
         var datetime = new moment().startOf('minute');
@@ -25,5 +25,10 @@ module.exports = AmpersandModel.extend({
             datetime.minutes(datetime.minutes() + diff);
         }
         this.date = datetime;
+    },
+    serialize: function () {
+        var res = AmpersandModel.prototype.serialize.call(this);
+        res['id'] = this.id;
+        return res;
     }
 });

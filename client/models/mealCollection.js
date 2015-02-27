@@ -5,5 +5,5 @@ var AmpersandFire = require('ampersand-fire');
 
 module.exports = AmpersandFire.Collection.extend({
     model: Meal,
-    url: config.firebaseURl + '/meals'
+    url: config.firebaseURL + 'meals'
 });
