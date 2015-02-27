@@ -28,7 +28,7 @@ module.exports = AmpersandModel.extend({
     },
     serialize: function () {
         var res = AmpersandModel.prototype.serialize.call(this);
-        res['id'] = this.id;
+        res.id = this.id;
         return res;
     }
 });

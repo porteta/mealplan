@@ -2,7 +2,7 @@ var PageView = require('./base');
 var templates = require('../templates');
 var PlanMealForm = require('../forms/planMeal');
 var Meal = require('../models/meal');
-var MealCollection = require('../models/mealCollection')
+var MealCollection = require('../models/mealCollection');
 
 module.exports = PageView.extend({
     pageTitle: 'home',

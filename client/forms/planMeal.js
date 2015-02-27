@@ -8,7 +8,7 @@ var ExtendedInput = InputView.extend({
 var SelectView = require('ampersand-select-view');
 var AmpersandPikadayView = require('ampersand-pikaday-view');
 var moment = require('moment');
-var MealCollection = require('../models/mealCollection')
+var MealCollection = require('../models/mealCollection');
 
 module.exports = FormView.extend({
     fields: function () {
@@ -72,7 +72,7 @@ module.exports = FormView.extend({
         this.model.set('date', data.date);
         this.model.set('name', data.name);
         this.model.set('locationQuery', data.locationQuery);
-        mealCollection = new MealCollection();
+        var mealCollection = new MealCollection();
         mealCollection.create(this.model);
         app.navigate('meal/' + this.model.id);
     }
